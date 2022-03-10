@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/joncon-gol/static/css/main.cffba69f.css",
+    "main.js": "/joncon-gol/static/js/main.8603b82f.js",
+    "static/js/787.4cac3e0b.chunk.js": "/joncon-gol/static/js/787.4cac3e0b.chunk.js",
+    "index.html": "/joncon-gol/index.html",
+    "main.cffba69f.css.map": "/joncon-gol/static/css/main.cffba69f.css.map",
+    "main.8603b82f.js.map": "/joncon-gol/static/js/main.8603b82f.js.map",
+    "787.4cac3e0b.chunk.js.map": "/joncon-gol/static/js/787.4cac3e0b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cffba69f.css",
+    "static/js/main.8603b82f.js"
+  ]
+}
