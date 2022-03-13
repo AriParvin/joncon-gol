@@ -16,6 +16,7 @@ class Cell extends React.Component {
                     top: `${CELL_SIZE * y + 1}px`,
                     width: `${CELL_SIZE - 1}px`,
                     height: `${CELL_SIZE - 1}px`,
+                    borderRadius: `40%`,
                 }}
             />
         );
@@ -49,6 +50,7 @@ class Game extends React.Component {
 
         return board;
     }
+
     //calculate offset click coordinates
     getElementOffset() {
         //getBoundingClientRect = get size and relative position to viewport of element
@@ -84,7 +86,7 @@ class Game extends React.Component {
         const x = Math.floor(offsetX / CELL_SIZE);
         const y = Math.floor(offsetY / CELL_SIZE);
 
-        //determine wether to render cell onClick
+        //determine wether to render cell
         if (x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
             this.board[y][x] = !this.board[y][x];
         }
@@ -93,7 +95,11 @@ class Game extends React.Component {
     };
 
     runGame = () => {
-        this.setState({ isRunning: true, iteration: this.state.iteration + 1 });
+        this.setState({
+            isRunning: true,
+            iteration: this.state.iteration + 1,
+        });
+
         this.runIteration();
     };
 
@@ -199,66 +205,68 @@ class Game extends React.Component {
                 this.board[y][x] = Math.random() >= 0.5;
             }
         }
-        this.setState({ isRunning: false, iteration: 1 });
-
-        this.setState({ cells: this.makeCells() });
+        this.stopGame();
+        this.setState({ cells: this.makeCells(), isRunning: false, iteration: 1 });
     };
 
     render() {
         const { cells, isRunning } = this.state;
         return (
-            <div>
-                <h1>John Conway's Game of Life</h1>
-                <div
-                    className='Board'
-                    style={{ width: WIDTH, height: HEIGHT, backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px` }}
-                    onClick={this.handleClick}
-                    ref={(n) => {
-                        this.boardRef = n;
-                    }}>
-                    {cells.map((cell) => (
-                        <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} />
-                    ))}
-                </div>
-                <div className='container'>
-                    <div className='controls'>
-                        {/* Update every <input value={this.state.interval} onChange={this.handleIntervalChange} /> msec */}
-                        {isRunning ? (
-                            <button className='button' onClick={this.stopGame}>
-                                Stop
-                            </button>
-                        ) : (
-                            <button className='button' onClick={this.runGame}>
-                                Run
-                            </button>
-                        )}
+            <div className='App'>
+                <div className='top-layer'>
+                    <h1 className='title'>Conway's Game of Life</h1>
 
-                        <button className='button' onClick={this.handleRandom}>
-                            Random
-                        </button>
-                        <button className='button' onClick={this.handleClear}>
-                            Clear
-                        </button>
-                        {/* progress one tick on click */}
-                        <button className='button' onClick={this.runOnce}>
-                            Next
-                        </button>
+                    <div
+                        className='Board'
+                        style={{ width: WIDTH, height: HEIGHT, backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px` }}
+                        onClick={this.handleClick}
+                        ref={(n) => {
+                            this.boardRef = n;
+                        }}>
+                        {cells.map((cell) => (
+                            <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} />
+                        ))}
                     </div>
-                    <div className='speed'>
-                        <button className='speedControls' onClick={this.slowDown}>
-                            –
-                        </button>
-                        <button className='speedControls' onClick={this.speedUp}>
-                            +
-                        </button>
-                        <div className='counter'>
-                            <div className='interval'>
-                                <p>Interval</p>
-                                <div style={{ fontSize: 30 }}>{this.state.interval} ms</div>
-                            </div>
-                            <div className='iteration'>
-                                <p>Iteration</p>
-                                <div style={{ fontSize: 30 }}>{this.state.iteration}</div>
+                    <div className='container'>
+                        <div className='controls'>
+                            {/* Update every <input value={this.state.interval} onChange={this.handleIntervalChange} /> msec */}
+                            {isRunning ? (
+                                <button className='button' onClick={this.stopGame}>
+                                    Stop
+                                </button>
+                            ) : (
+                                <button className='button' onClick={this.runGame}>
+                                    Run
+                                </button>
+                            )}
+
+                            <button className='button' onClick={this.handleRandom}>
+                                Random
+                            </button>
+                            <button className='button' onClick={this.handleClear}>
+                                Clear
+                            </button>
+                            {/* progress one tick on click */}
+                            <button className='button' onClick={this.runOnce}>
+                                Next
+                            </button>
+                        </div>
+                        <div className='speed'>
+                            <button className='speedControls' onClick={this.slowDown}>
+                                –
+                            </button>
+                            <button className='speedControls' onClick={this.speedUp}>
+                                +
+                            </button>
+                            <div className='counter'>
+                                <div className='interval'>
+                                    <p>Interval</p>
+                                    <div style={{ fontSize: 30 }}>{this.state.interval} ms</div>
+                                </div>
+                                <div className='iteration'>
+                                    <p>Iteration</p>
+                                    <div style={{ fontSize: 30 }}>{this.state.iteration}</div>
+                                </div>
                             </div>
                         </div>
                     </div>

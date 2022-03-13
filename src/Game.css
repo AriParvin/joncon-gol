@@ -9,16 +9,54 @@ h1 {
 p {
     margin: 0;
 }
-
+.title {
+    text-align: center;
+}
 .Board {
     position: relative;
     margin: 1em auto 1em auto;
     background-color: #eee;
-    background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px);
+    background-image: linear-gradient(rgb(211, 211, 211) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(211, 211, 211) 1px, transparent 1px);
+    border-radius: 1%;
+    z-index: 100;
+}
+.bg-Board {
+    position: absolute;
+    background-image: linear-gradient(rgb(80, 79, 79) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(80, 79, 79) 1px, transparent 1px);
+    /* background-color: rgb(97, 97, 97); */
+    opacity: 50%;
+    border-radius: 1%;
+    z-index: -100;
+    margin: 0;
 }
 .Cell {
-    background: darkgreen;
     position: absolute;
+    animation: colorchange 5s infinite;
+}
+@keyframes colorchange {
+    0% {
+        background: darkgreen;
+    }
+    25% {
+        background: green;
+    }
+    50% {
+        background: rgb(0, 182, 0);
+    }
+    75% {
+        background: green;
+    }
+    100% {
+        background: darkgreen;
+    }
+}
+
+.bg-cell {
+    background: #000;
+    position: absolute;
+    opacity: 50%;
 }
 .container {
     width: 800px;
