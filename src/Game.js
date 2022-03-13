@@ -1,5 +1,6 @@
 import React from 'react';
 import './Game.css';
+import Background from './Background';
 
 const CELL_SIZE = 20;
 const WIDTH = 800;
@@ -213,6 +214,7 @@ class Game extends React.Component {
         const { cells, isRunning } = this.state;
         return (
             <div className='App'>
+                <Background />
                 <div className='top-layer'>
                     <h1 className='title'>Conway's Game of Life</h1>
 
