@@ -37,8 +37,8 @@ class Game extends React.Component {
         isRunning: false,
         interval: 1000,
         iteration: 0,
+        mouseDown: false,
     };
-    //create empty board
     makeEmptyBoard() {
         let board = [];
         for (let y = 0; y < this.rows; y++) {
@@ -51,7 +51,6 @@ class Game extends React.Component {
         return board;
     }
 
-    //calculate offset click coordinates
     getElementOffset() {
         //getBoundingClientRect = get size and relative position to viewport of element
         const rect = this.boardRef.getBoundingClientRect();
@@ -246,7 +245,6 @@ class Game extends React.Component {
                             <button className='button' onClick={this.handleClear}>
                                 Clear
                             </button>
-                            {/* progress one tick on click */}
                             <button className='button' onClick={this.runOnce}>
                                 Next
                             </button>
