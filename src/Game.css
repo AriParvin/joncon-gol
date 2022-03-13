@@ -12,6 +12,7 @@ p {
 .title {
     text-align: center;
 }
+
 .Board {
     position: relative;
     margin: 1em auto 1em auto;
@@ -39,15 +40,10 @@ p {
     0% {
         background: darkgreen;
     }
-    25% {
-        background: green;
-    }
     50% {
-        background: rgb(0, 182, 0);
-    }
-    75% {
         background: green;
     }
+
     100% {
         background: darkgreen;
     }
@@ -70,11 +66,17 @@ p {
     margin-bottom: 0;
 }
 .button {
+    transition: 0.5s;
     font-size: 2em;
     width: 30%;
     height: 2em;
     background-color: #eee;
     margin-bottom: auto;
+}
+.button:hover {
+    transition: 0.5s;
+    background-color: #333;
+    color: white;
 }
 .speed {
     justify-content: center;
@@ -82,9 +84,15 @@ p {
     display: flex;
 }
 .speedControls {
+    transition: 0.5s;
     font-size: 2em;
     width: 14.5%;
     height: 2em;
+}
+.speedControls:hover {
+    transition: 0.5s;
+    background-color: #333;
+    color: white;
 }
 .counter {
     margin-top: 1em;
