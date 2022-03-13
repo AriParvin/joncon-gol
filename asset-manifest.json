@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/joncon-gol/static/css/main.408689a1.css",
-    "main.js": "/joncon-gol/static/js/main.8603b82f.js",
+    "main.css": "/joncon-gol/static/css/main.61654514.css",
+    "main.js": "/joncon-gol/static/js/main.a9cb6888.js",
     "static/js/787.4cac3e0b.chunk.js": "/joncon-gol/static/js/787.4cac3e0b.chunk.js",
     "index.html": "/joncon-gol/index.html",
-    "main.408689a1.css.map": "/joncon-gol/static/css/main.408689a1.css.map",
-    "main.8603b82f.js.map": "/joncon-gol/static/js/main.8603b82f.js.map",
+    "main.61654514.css.map": "/joncon-gol/static/css/main.61654514.css.map",
+    "main.a9cb6888.js.map": "/joncon-gol/static/js/main.a9cb6888.js.map",
     "787.4cac3e0b.chunk.js.map": "/joncon-gol/static/js/787.4cac3e0b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.408689a1.css",
-    "static/js/main.8603b82f.js"
+    "static/css/main.61654514.css",
+    "static/js/main.a9cb6888.js"
   ]
 }
