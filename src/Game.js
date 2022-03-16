@@ -37,7 +37,7 @@ class Game extends React.Component {
         isRunning: false,
         interval: 1000,
         iteration: 0,
-        mouseDown: false,
+        isLight: true,
     };
     makeEmptyBoard() {
         let board = [];
@@ -208,8 +208,23 @@ class Game extends React.Component {
         this.setState({ cells: this.makeCells(), isRunning: false, iteration: 1 });
     };
 
+    toggleTheme = () => {
+        this.setState({ isLight: true });
+        var targetTheme = 'light';
+        var currentTheme = document.documentElement.getAttribute('data-theme');
+
+        if (currentTheme === 'light') {
+            this.setState({ isLight: false });
+            targetTheme = 'dark';
+        }
+        console.log(targetTheme);
+
+        document.documentElement.setAttribute('data-theme', targetTheme);
+        localStorage.setItem('theme', targetTheme);
+    };
+
     render() {
-        const { cells, isRunning } = this.state;
+        const { cells, isRunning, isLight } = this.state;
         return (
             <div className='App'>
                 <div className='top-layer'>
@@ -265,6 +280,25 @@ class Game extends React.Component {
                                     <p>Iteration</p>
                                     <div style={{ fontSize: 30 }}>{this.state.iteration}</div>
                                 </div>
+                            </div>
+                            <div>
+                                {isLight ? (
+                                    <button
+                                        onClick={this.toggleTheme}
+                                        id='theme-toggle'
+                                        className='theme-switch'
+                                        type='button'>
+                                        Dark
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={this.toggleTheme}
+                                        id='theme-toggle'
+                                        className='theme-switch'
+                                        type='button'>
+                                        Light
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

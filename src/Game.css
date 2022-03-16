@@ -1,9 +1,40 @@
+:root {
+    --primary-color: #302ae6;
+    --secondary-color: #818cab;
+    --font-color-1: #747e99;
+    --font-color-2: #eee;
+    --bg-color: #fff;
+    --board-color: #eee;
+    --board-grid: linear-gradient(rgb(211, 211, 211) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(211, 211, 211) 1px, transparent 1px);
+    --ctrl-border: rgb(202, 200, 200);
+    --cell-color1: #302ae6;
+    --cell-color2: #5e58ff;
+    --btn-bg-1: #eee;
+    --btn-bg-2: #444;
+}
+[data-theme='dark'] {
+    --primary-color: #66bb6a;
+    --secondary-color: #818cab;
+    --font-color-1: #eee;
+    --font-color-2: #747e99;
+    --bg-color: #333;
+    --board-color: #333;
+    --board-grid: linear-gradient(#555 1px, transparent 1px), linear-gradient(90deg, #555 1px, transparent 1px);
+    --ctrl-border: #444;
+    --cell-color1: green;
+    --cell-color2: #66bb6a;
+    --btn-bg-1: #444;
+    --btn-bg-2: #fff;
+}
+
 body {
-    background-color: #333;
+    background-color: var(--bg-color);
+    color: var(--font-color);
 }
 
 h1 {
-    color: #eee;
+    color: var(--primary-color);
 }
 
 p {
@@ -16,44 +47,43 @@ p {
 .Board {
     position: relative;
     margin: 1em auto 1em auto;
-    background-color: #eee;
-    background-image: linear-gradient(rgb(211, 211, 211) 1px, transparent 1px),
-        linear-gradient(90deg, rgb(211, 211, 211) 1px, transparent 1px);
+    background-color: var(--board-color);
+    background-image: var(--board-grid);
     border-radius: 1%;
     z-index: 100;
 }
-.bg-Board {
+/* .bg-Board {
     position: absolute;
     background-image: linear-gradient(rgb(80, 79, 79) 1px, transparent 1px),
         linear-gradient(90deg, rgb(80, 79, 79) 1px, transparent 1px);
-    /* background-color: rgb(97, 97, 97); */
+    background-color: rgb(97, 97, 97);
     opacity: 50%;
     border-radius: 1%;
     z-index: -100;
     margin: 0;
-}
+} */
 .Cell {
     position: absolute;
     animation: colorchange 5s infinite;
 }
 @keyframes colorchange {
     0% {
-        background: darkgreen;
+        background: var(--cell-color1);
     }
     50% {
-        background: green;
+        background: var(--cell-color2);
     }
 
     100% {
-        background: darkgreen;
+        background: var(--cell-color1);
     }
 }
 
-.bg-cell {
+/* .bg-cell {
     background: #000;
     position: absolute;
     opacity: 50%;
-}
+} */
 .container {
     width: 800px;
     margin-right: auto;
@@ -66,17 +96,19 @@ p {
     margin-bottom: 0;
 }
 .button {
-    transition: 0.5s;
+    transition: 0.3s;
     font-size: 2em;
     width: 30%;
     height: 2em;
-    background-color: #eee;
     margin-bottom: auto;
+    background-color: var(--btn-bg-1);
+    color: var(--font-color-1);
+    border-color: var(--ctrl-border);
 }
 .button:hover {
-    transition: 0.5s;
-    background-color: #333;
-    color: white;
+    transition: 0.25s;
+    background-color: var(--btn-bg-2);
+    color: var(--font-color-2);
 }
 .speed {
     justify-content: center;
@@ -84,27 +116,46 @@ p {
     display: flex;
 }
 .speedControls {
-    transition: 0.5s;
+    transition: 0.3s;
     font-size: 2em;
     width: 14.5%;
     height: 2em;
+    border-color: var(--ctrl-border);
+    color: var(--font-color-1);
+    background-color: var(--btn-bg-1);
 }
 .speedControls:hover {
-    transition: 0.5s;
-    background-color: #333;
-    color: white;
+    transition: 0.25s;
+    background-color: var(--btn-bg-2);
+    color: var(--font-color-2);
 }
 .counter {
     margin-top: 1em;
-    margin-left: 4em;
-    margin-right: 25%;
+    margin-left: 17%;
     width: 50%;
     height: auto;
-    color: #eee;
+    color: var(--font-color-1);
 }
 .interval {
     float: left;
 }
 .iteration {
-    float: right;
+    float: center;
+}
+.theme-switch {
+    text-align: center;
+    font-size: 1em;
+    transition: 0.3s;
+    margin: 2em;
+    width: 4em;
+    height: 4em;
+    background-color: var(--btn-bg-1);
+    color: var(--font-color-1);
+    border-color: var(--ctrl-border);
+    border-radius: 100%;
+}
+.theme-switch:hover {
+    transition: 0.25s;
+    background-color: var(--btn-bg-2);
+    color: var(--font-color-2);
 }
